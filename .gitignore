@@ -4,7 +4,9 @@ Intermediate
 Saved
 Build
 
+.idea
 .vscode
+.vsconfig
 .vs
 *.VC.db
 *.opensdf
