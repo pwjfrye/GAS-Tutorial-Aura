@@ -1,7 +1,7 @@
 
 
 
-#include "AuraCharacterBase.h"
+#include "Aura/Public/Character/AuraCharacterBase.h"
 
 // Sets default values
 AAuraCharacterBase::AAuraCharacterBase()
