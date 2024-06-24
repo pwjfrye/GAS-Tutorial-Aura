@@ -12,10 +12,7 @@ class AURA_API AAuraEnemy : public AAuraCharacterBase, public IHighlightInterfac
 {
 	GENERATED_BODY()
 
-	AAuraEnemy();
-
 	virtual void BeginPlay() override;
-	virtual void Tick(float DeltaSeconds) override;
 
 	//~ Begin IHighlightInterface Interface.
 	virtual void HighlightActor() override;
