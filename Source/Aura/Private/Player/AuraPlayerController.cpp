@@ -7,7 +7,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "Engine/LocalPlayer.h"
 #include "GameFramework/Pawn.h"
-#include "Interaction/HighlightInterface.h"
+#include "Interaction/HighlightComponent.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
@@ -74,20 +74,20 @@ void AAuraPlayerController::CursorTrace()
 		return;
 	}
 
-	auto NewHighlightActor = TScriptInterface<IHighlightInterface>(CursorHit.GetActor());
+	auto* NewHighlightActor = Cast<UHighlightComponent>(CursorHit.GetActor()->GetComponentByClass(UHighlightComponent::StaticClass()));
 	if (CurHighlightActor == NewHighlightActor)
 	{
 		return;
 	}
 
-	if (CurHighlightActor)
+	if (CurHighlightActor.IsValid())
 	{
 		CurHighlightActor->UnhighlightActor();
 	}
 
 	CurHighlightActor = NewHighlightActor;
 
-	if (CurHighlightActor)
+	if (CurHighlightActor.IsValid())
 	{
 		NewHighlightActor->HighlightActor();
 	}

@@ -7,6 +7,7 @@
 
 #include "AuraPlayerController.generated.h"
 
+class UHighlightComponent;
 struct FInputActionValue;
 class UInputAction;
 class UInputMappingContext;
@@ -35,6 +36,6 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputAction> MoveAction;
 
-	TScriptInterface<IHighlightInterface> PrevHighlightActor;
-	TScriptInterface<IHighlightInterface> CurHighlightActor;
+	TWeakObjectPtr<UHighlightComponent> PrevHighlightActor;
+	TWeakObjectPtr<UHighlightComponent> CurHighlightActor;
 };
