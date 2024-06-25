@@ -13,4 +13,5 @@ class AURA_API AAuraEnemy : public AAuraCharacterBase
 
 public:
 	AAuraEnemy();
+	virtual void BeginPlay() override;
 };
