@@ -8,7 +8,7 @@
 
 struct FWidgetControllerParams;
 class UAbilitySystemComponent;
-class UAttributeSet;
+class UAuraAttributeSet;
 class UAuraUserWidget;
 class UOverlayWidgetController;
 
@@ -23,7 +23,7 @@ public:
 
 	UOverlayWidgetController* GetOverlayWidgetController(const FWidgetControllerParams& WidgetControllerParams);
 
-	void InitOverlay(APlayerController* InPlayerController, APlayerState* InPlayerState, UAbilitySystemComponent* InAsc, UAttributeSet* InAttributeSet);
+	void InitOverlay(APlayerController* InPlayerController, APlayerState* InPlayerState, UAbilitySystemComponent* InAsc, UAuraAttributeSet* InAttributeSet);
 
 private:
 	UPROPERTY(EditAnywhere)

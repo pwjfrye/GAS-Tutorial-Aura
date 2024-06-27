@@ -19,7 +19,7 @@ UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetCont
 	return OverlayWidgetController;
 }
 
-void AAuraHUD::InitOverlay(APlayerController* InPlayerController, APlayerState* InPlayerState, UAbilitySystemComponent* InAsc, UAttributeSet* InAttributeSet)
+void AAuraHUD::InitOverlay(APlayerController* InPlayerController, APlayerState* InPlayerState, UAbilitySystemComponent* InAsc, UAuraAttributeSet* InAttributeSet)
 {
 	checkf(OverlayWidgetClass, TEXT("Overlay Widget Class not set!"))
 	checkf(OverlayWidgetControllerClass, TEXT("Overlay Widget Controller Class not set!"))
@@ -31,6 +31,7 @@ void AAuraHUD::InitOverlay(APlayerController* InPlayerController, APlayerState* 
 	auto* WidgetController = GetOverlayWidgetController(WidgetControllerParams);
 
 	OverlayWidget->SetWidgetController(WidgetController);
+	WidgetController->BroadcastInitialValues();
 
 	Widget->AddToViewport();
 }
