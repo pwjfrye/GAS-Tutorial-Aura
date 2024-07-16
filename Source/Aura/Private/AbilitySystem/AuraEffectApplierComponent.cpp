@@ -6,6 +6,7 @@
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemComponent.h"
 #include "GameplayEffect.h"
+#include "AbilitySystem/AuraLevelComponent.h"
 
 UAuraEffectApplierComponent::UAuraEffectApplierComponent()
 {
@@ -27,9 +28,15 @@ bool UAuraEffectApplierComponent::TryApplyEffectToTarget(AActor* TargetActor)
 		return false;
 	}
 
+	auto Level = 1.0f;
+	if (const auto* LevelComponent = GetOwner()->FindComponentByClass<UAuraLevelComponent>())
+	{
+		Level = LevelComponent->GetLevel();
+	}
+
 	auto EffectContextHandle = TargetAsc->MakeEffectContext();
 	EffectContextHandle.AddSourceObject(this);
-	const auto EffectSpecHandle = TargetAsc->MakeOutgoingSpec(GameplayEffectClass, 1.0f, EffectContextHandle);
+	const auto EffectSpecHandle = TargetAsc->MakeOutgoingSpec(GameplayEffectClass, Level, EffectContextHandle);
 	const auto ActiveEffectHandle = TargetAsc->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());
 
 	if (EffectSpecHandle.Data.Get()->Def->DurationPolicy != EGameplayEffectDurationType::Instant)
